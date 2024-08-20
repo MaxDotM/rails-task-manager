@@ -1,0 +1,14 @@
+<h1 class="ms-2">My tasks</h1>
+<ul class="list-group">
+  <% @tasks.each do |task| %>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="checkbox" value="">
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to task_path(task),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-solid fa-delete-left ms-2"></i>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<%= link_to "Create Task", new_task_path, class:"btn btn-primary mt-2 ms-2" %>
